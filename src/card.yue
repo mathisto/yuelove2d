@@ -1,0 +1,19 @@
+{ graphics: lg, mouse: lm } = love
+
+import legend from "src.cardsheet"
+
+class Card
+  new: (row = 0, col = 0)=>
+    @image = love.graphics.newImage("assets/sprites/cardsheet.png")
+    -- Given a row and column, create
+    @height = 97 -- Half the image height
+    @width = (1814.0 / 27) -- Width of image divided by column count
+    -- A quad "selecting" a single card from the spritesheet
+    @quad = lg.newQuad((row * @width), (col * @height), @width, @height, @image)
+
+  draw: =>
+    -- Draw the card on the current mouse coordinates
+    lg.print("mouse_x: " .. lm.getX! .. " - mouse_y: " .. lm.getY!, 5, 5)
+    lg.draw(@image, @quad, lm.getX!, lm.getY!)
+
+{ :Card }

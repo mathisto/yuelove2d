@@ -1,0 +1,12 @@
+{ graphics: lg } = love
+
+import "src.card"
+import "src.cardsheet" as CS
+
+love.load = ->
+  lg.setColor 255, 255, 255
+  lg.setBackgroundColor 0, 0, 0
+
+love.draw = (dt)->
+  ace_of_spades = card.Card(CS.legend.club_2.unpack)
+  ace_of_spades\draw!
